@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>DevCamper API &nbsp;|&nbsp; Backend API for the DevCamper application to manage bootcamps, courses, reviews, users and authentication.</title>
+
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+<div class=container-fluid>
+    <div class=row>
+        <div class="col-md-12 collection-intro">
+            <h3>DevCamper API</h3>
+            <p>
+                <p>Backend API for the DevCamper application to manage bootcamps, courses, reviews, users and authentication.</div>
+        <div class=col-md-12>
+            <div class=col-md-3>
+                <ul>
+                    <li><strong><a href=#Authentication>Authentication</a></strong>
+                        <ul>
+                            <li><a class=endpoint_menu href=#jump-Authentication-ForgotPassword>Forgot Password</a>
+                                <li><a class=endpoint_menu href=#jump-Authentication-GetLoggedInUserviaToken>Get Logged In User via Token</a>
+                                    <li><a class=endpoint_menu href=#jump-Authentication-LoginUser>Login User</a>
+                                        <li><a class=endpoint_menu href=#jump-Authentication-LogoutUser>Logout User</a>
+                                            <li><a class=endpoint_menu href=#jump-Authentication-RegisterUser>Register User</a>
+                                                <li><a class=endpoint_menu href=#jump-Authentication-ResetPassword>Reset Password</a>
+                                                    <li><a class=endpoint_menu href=#jump-Authentication-Updateuserdetaills>Update user detaills</a>
+                                                        <li><a class=endpoint_menu href=#jump-Authentication-Updateuserpassword>Update user password</a></ul>
+                        <li><strong><a href=#Bootcamps>Bootcamps</a></strong>
+                            <ul>
+                                <li><a class=endpoint_menu href=#jump-Bootcamps-CreateNewBootcamp>Create New Bootcamp</a>
+                                    <li><a class=endpoint_menu href=#jump-Bootcamps-DeleteBootcamp>Delete Bootcamp</a>
+                                        <li><a class=endpoint_menu href=#jump-Bootcamps-GetAllBootcamps>Get All Bootcamps</a>
+                                            <li><a class=endpoint_menu href=#jump-Bootcamps-GetBootcampsByDistance>Get Bootcamps By Distance</a>
+                                                <li><a class=endpoint_menu href=#jump-Bootcamps-GetSingleBootcamp>Get Single Bootcamp</a>
+                                                    <li><a class=endpoint_menu href=#jump-Bootcamps-UpdateBootcamp>Update Bootcamp</a>
+                                                        <li><a class=endpoint_menu href=#jump-Bootcamps-UploadPhoto>Upload Photo</a></ul>
+                            <li><strong><a href=#Courses>Courses</a></strong>
+                                <ul>
+                                    <li><a class=endpoint_menu href=#jump-Courses-CreateBootcampCourse>Create Bootcamp Course</a>
+                                        <li><a class=endpoint_menu href=#jump-Courses-DeleteCourse>Delete Course</a>
+                                            <li><a class=endpoint_menu href=#jump-Courses-GetAllCourses>Get All Courses</a>
+                                                <li><a class=endpoint_menu href=#jump-Courses-GetCoursesForBootcamp>Get Courses For Bootcamp</a>
+                                                    <li><a class=endpoint_menu href=#jump-Courses-GetSingleCourse>Get Single Course</a>
+                                                        <li><a class=endpoint_menu href=#jump-Courses-UpdateCourse>Update Course</a></ul>
+                                <li><strong><a href=#Reviews>Reviews</a></strong>
+                                    <ul>
+                                        <li><a class=endpoint_menu href=#jump-Reviews-AddReviewforBootcamp>Add Review for Bootcamp</a>
+                                            <li><a class=endpoint_menu href=#jump-Reviews-DeleteReview>Delete Review</a>
+                                                <li><a class=endpoint_menu href=#jump-Reviews-GetReviewsforBootcamps>Get Reviews for Bootcamps</a>
+                                                    <li><a class=endpoint_menu href=#jump-Reviews-GetSingleReview>Get Single Review</a>
+                                                        <li><a class=endpoint_menu href=#jump-Reviews-Getallreviews>Get all reviews</a>
+                                                            <li><a class=endpoint_menu href=#jump-Reviews-UpdateReview>Update Review</a></ul>
+                                    <li><strong><a href=#Users>Users</a></strong>
+                                        <ul>
+                                            <li><a class=endpoint_menu href=#jump-Users-CreateUser>Create User</a>
+                                                <li><a class=endpoint_menu href=#jump-Users-DeleteUser>Delete User</a>
+                                                    <li><a class=endpoint_menu href=#jump-Users-GetAllUsers>Get All Users</a>
+                                                        <li><a class=endpoint_menu href=#jump-Users-GetSingleUser>Get Single User</a>
+                                                            <li><a class=endpoint_menu href=#jump-Users-UpdateUser>Update User</a></ul>
+                </ul>
+            </div>
+            <div class=col-md-9>
+                <div class="panel panel-default">
+                    <div class=panel-heading>
+                        <h3 class=panel-title id=Authentication>Authentication
+                            <span class=badge>8</span></h3>
+                    </div>
+                    <div class=panel-body>
+                        <p>
+                            <p>Routes for user authentication including register, login, reset password, etc.
+                                <div class=request-item>
+                                    <div class=panel-group id=accordion-Authentication>
+                                        <div class="panel panel-success" id=jump-Authentication-ForgotPassword>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-ForgotPassword>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Forgot Password</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-success">POST</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/forgotpassword
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-ForgotPassword class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Generate password token and send email</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;john@gmail.com&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Authentication-GetLoggedInUserviaToken>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-GetLoggedInUserviaToken>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Logged In User via Token</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/me
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-GetLoggedInUserviaToken class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get a user by bearer token.</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-success" id=jump-Authentication-LoginUser>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-LoginUser>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Login User</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-success">POST</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/login
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-LoginUser class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Login a user with credentials.</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                    </table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;john@gmail.com&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Authentication-LogoutUser>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-LogoutUser>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Logout User</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/logout
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-LogoutUser class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Clear Token Cookie</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-success" id=jump-Authentication-RegisterUser>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-RegisterUser>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Register User</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-success">POST</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/register
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-RegisterUser class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Add user to database with encrypted password.</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                    </table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Zaker&#34;,
+&#34;email&#34;: &#34;zaker@email.com&#34;,
+&#34;password&#34;: &#34;123456&#34;,
+&#34;role&#34;: &#34;publisher&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Authentication-ResetPassword>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-ResetPassword>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Reset Password</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/resetpassword/08fda7a1c77d8c602010a306ba8a5fd86f16b76e
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-ResetPassword class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Reset password</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;password&#34;: &#34;1234567&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Authentication-Updateuserdetaills>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Updateuserdetaills>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update user detaills</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/updatedetails
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-Updateuserdetaills class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Update logged in user name and email</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;john@gmail.com&#34;,
+&#34;name&#34;: &#34;John Doe&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Authentication-Updateuserpassword>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Updateuserpassword>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update user password</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/auth/updatepassword
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Authentication-Updateuserpassword class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Update logged in user password, send in the body currentPassword and newPassword</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;currentPassword&#34;: &#34;1234567&#34;,
+&#34;newPassword&#34;: &#34;123456&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class=panel-heading>
+                        <h3 class=panel-title id=Bootcamps>Bootcamps
+                            <span class=badge>7</span></h3>
+                    </div>
+                    <div class=panel-body>
+                        <p>
+                            <p>Bootcamp CRUD functionality.
+                                <div class=request-item>
+                                    <div class=panel-group id=accordion-Bootcamps>
+                                        <div class="panel panel-success" id=jump-Bootcamps-CreateNewBootcamp>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-success data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-CreateNewBootcamp>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create New Bootcamp</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-success">POST</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Bootcamps-CreateNewBootcamp class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Add new bootcamp to database. Must be authenticated and must be publisher or admin.</small><br><br>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;TEST 3&#34;,
+&#34;description&#34;: &#34;Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer&#34;,
+&#34;website&#34;: &#34;https://devworks.com&#34;,
+&#34;phone&#34;: &#34;(111) 111-1111&#34;,
+&#34;email&#34;: &#34;enroll@devworks.com&#34;,
+&#34;address&#34;: &#34;233 Bay State Rd Boston MA 02215&#34;,
+&#34;careers&#34;: [&#34;Web Development&#34;, &#34;UI/UX&#34;, &#34;Business&#34;],
+&#34;housing&#34;: true,
+&#34;jobAssistance&#34;: true,
+&#34;jobGuarantee&#34;: false,
+&#34;acceptGi&#34;: true
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-danger" id=jump-Bootcamps-DeleteBootcamp>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-danger data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-DeleteBootcamp>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete Bootcamp</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-danger">DELETE</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/5f27edc069d319136cfc11be
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Bootcamps-DeleteBootcamp class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Delete bootcamp from database</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Bootcamps-GetAllBootcamps>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-GetAllBootcamps>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get All Bootcamps</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Bootcamps-GetAllBootcamps class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Fetch all bootcamps from database. Includes pagination, filtering, etc</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Bootcamps-GetBootcampsByDistance>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-GetBootcampsByDistance>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Bootcamps By Distance</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/radius/90210/200
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Bootcamps-GetBootcampsByDistance class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get bootcamps within a radius of a specific zipcode.</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Bootcamps-GetSingleBootcamp>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-GetSingleBootcamp>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Single Bootcamp</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/1
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Bootcamps-GetSingleBootcamp class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get single bootcamp by ID</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Bootcamps-UpdateBootcamp>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-UpdateBootcamp>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update Bootcamp</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/1
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Bootcamps-UpdateBootcamp class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Update bootcamp in the database</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Bootcamps-UploadPhoto>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Bootcamps href=#collapse-Bootcamps-UploadPhoto>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Upload Photo</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/1/photo
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Bootcamps-UploadPhoto class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Route to upload a bootcamp photo.</small><br><br></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class=panel-heading>
+                        <h3 class=panel-title id=Courses>Courses
+                            <span class=badge>6</span></h3>
+                    </div>
+                    <div class=panel-body>
+                        <p>
+                            <p>Courses CRUD functionality.
+                                <div class=request-item>
+                                    <div class=panel-group id=accordion-Courses>
+                                        <div class="panel panel-success" id=jump-Courses-CreateBootcampCourse>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-success data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-CreateBootcampCourse>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create Bootcamp Course</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-success">POST</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/1/courses
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Courses-CreateBootcampCourse class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Create a course for a specific bootcamp.</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-danger" id=jump-Courses-DeleteCourse>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-danger data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-DeleteCourse>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete Course</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-danger">DELETE</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/courses/1
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Courses-DeleteCourse class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Remove a course form the database</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Courses-GetAllCourses>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-GetAllCourses>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get All Courses</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/courses
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Courses-GetAllCourses class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get all courses from database.</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Courses-GetCoursesForBootcamp>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-GetCoursesForBootcamp>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Courses For Bootcamp</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/5f27c2ba8f1e35109004ad0e/courses
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Courses-GetCoursesForBootcamp class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get the specific courses for a bootcamp.</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Courses-GetSingleCourse>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-GetSingleCourse>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Single Course</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/courses/1
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Courses-GetSingleCourse class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get a course by its ID</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Courses-UpdateCourse>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Courses href=#collapse-Courses-UpdateCourse>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update Course</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/courses/5f2937c8696a8513c81e7e1d
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Courses-UpdateCourse class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Update a course in the database</small><br><br></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class=panel-heading>
+                        <h3 class=panel-title id=Reviews>Reviews
+                            <span class=badge>6</span></h3>
+                    </div>
+                    <div class=panel-body>
+                        <p>
+                            <p>Manage course reviews
+                                <div class=request-item>
+                                    <div class=panel-group id=accordion-Reviews>
+                                        <div class="panel panel-success" id=jump-Reviews-AddReviewforBootcamp>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-success data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-AddReviewforBootcamp>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Add Review for Bootcamp</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-success">POST</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/reviews
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Reviews-AddReviewforBootcamp class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Insert review for a specific bootcamp</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;title&#34;: &#34;nice bootcamp&#34;,
+&#34;text&#34;: &#34;I learned a lot&#34;,
+&#34;rating&#34;: 8
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-danger" id=jump-Reviews-DeleteReview>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-danger data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-DeleteReview>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete Review</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-danger">DELETE</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/reviews/5f5725ada97ff10d7c0e95ee
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Reviews-DeleteReview class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Remove review from database</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;title&#34;: &#34;had fun&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Reviews-GetReviewsforBootcamps>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-GetReviewsforBootcamps>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Reviews for Bootcamps</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/reviews
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Reviews-GetReviewsforBootcamps class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Fetch the reviews for a specific bootcamp</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Reviews-GetSingleReview>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-GetSingleReview>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Single Review</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/reviews/5d7a514b5d2c12c7449be027
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Reviews-GetSingleReview class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Fetch a review from database by id and populate bootcamp name and description</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Reviews-Getallreviews>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-Getallreviews>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all reviews</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/reviews
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Reviews-Getallreviews class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get all reviews from database and populate with bootcamp name and description</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Reviews-UpdateReview>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Reviews href=#collapse-Reviews-UpdateReview>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update Review</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/reviews/5f5725ada97ff10d7c0e95ee
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Reviews-UpdateReview class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Update review in database</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;title&#34;: &#34;had fun&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class=panel-heading>
+                        <h3 class=panel-title id=Users>Users
+                            <span class=badge>5</span></h3>
+                    </div>
+                    <div class=panel-body>
+                        <p>
+                            <p>CRUD functionality for users only available to admins
+                                <div class=request-item>
+                                    <div class=panel-group id=accordion-Users>
+                                        <div class="panel panel-success" id=jump-Users-CreateUser>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-success data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-CreateUser>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create User</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-success">POST</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/users
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Users-CreateUser class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Add user to database (admin)</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Zaker Olive&#34;,
+&#34;email&#34;: &#34;zaker@example.com&#34;,
+&#34;password&#34;: &#34;123456&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-danger" id=jump-Users-DeleteUser>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-danger data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-DeleteUser>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete User</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-danger">DELETE</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/users/5f5506b5d967c80c50e00b70
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Users-DeleteUser class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Delete user in database (admin)</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Users-GetAllUsers>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-GetAllUsers>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get All Users</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/users
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Users-GetAllUsers class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get all users(admin)</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-info" id=jump-Users-GetSingleUser>
+                                            <div class=panel-heading><small class="pull-right text-muted"></small>
+                                                <a class=text-info data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-GetSingleUser>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get Single User</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-info">GET</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/users/5d7a514b5d2c12c7449be042
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Users-GetSingleUser class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Get single user by id (admin)</small><br><br></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-warning" id=jump-Users-UpdateUser>
+                                            <div class=panel-heading><small class="pull-right text-muted">raw</small>
+                                                <a class=text-warning data-toggle=collapse data-parent=#accordion-Users href=#collapse-Users-UpdateUser>
+                                                    <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update User</strong> &nbsp;|&nbsp;
+                                                        <strong class="request-method border-warning">PUT</strong> &nbsp; https://zaker-devcamper-api.herokuapp.com/api/v1/users/5f5506b5d967c80c50e00b70
+                                                    </h4>
+                                                </a>
+                                            </div>
+                                            <div id=collapse-Users-UpdateUser class="panel-collapse collapse">
+                                                <div class=panel-body>
+                                                    <h5 class="label label-default">Description</h5><br><small><p>Update user in database (admin)</small><br><br>
+                                                    <h5 class="label label-warning">Headers</h5>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Key
+                                                                    <th>Value
+                                                                        <th>Description
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Content-Type
+                                                                                        <td>application/json
+                                                                                            <td>
+                                                                                                <p>JSON Type</table>
+                                                    <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Zaker Olive Abdul&#34;
+}</span>
+                                                    <div class=clearfix></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="navbar-default navbar-fixed-bottom">
+        <div class=container-fluid>
+            <div class="span12 text-center"><span data-toggle=tooltip title="If the application help you, please feel free to give a star to the project in github. Your star inspire me to work more on open-source projects like this!">Made with <em class=love-color>&#9829;</em> by <a href=https://github.com/thedevsaddam target=_blank class=text-muted>thedevsaddam</a> | Generated at: 2020-09-08 17:46:12 by <a href=https://github.com/thedevsaddam/docgen target=_blank class=text-muted>docgen</a></span></div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
