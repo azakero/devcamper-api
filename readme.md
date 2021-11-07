@@ -22,5 +22,9 @@ npm run dev
 npm start
 ```
 
-- Version: 1.0.0
-- License: MIT
+
+## Version
+> 1.0.0
+
+## License
+> MIT
